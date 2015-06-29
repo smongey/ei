@@ -1,0 +1,149 @@
+// bower:scss
+// endbower
+
+
+@import "foundation";
+
+
+// Variables
+$navy: #053341;
+$gold: #9e8c5d;
+
+$state: #63b428;
+$historic: #14825f;
+$language: #0f81ad;
+$youth: #cf568c;
+$culture: #7a2b88;
+$community: #e6263a;
+$global: #f27f0a;
+$strands: state, historic, language, youth, culture, community, global;
+$strandcolours: $state, $historic, $language, $youth, $culture, $community, $global;
+
+
+.browserupgrade { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }
+
+// Type
+
+* { -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: 'Alegreya', Palatino, Times, serif;
+  color: $navy;
+}
+
+h1, h2, h3 {
+  font-family: 'Karla', Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: $navy;
+  line-height: 1.2em;
+}
+
+// Utilities
+
+.ire {
+  color: darken($gold, 10%);
+}
+
+.break {
+  display: block;
+}
+
+.more {
+
+}
+
+
+
+@for $i from 1 through length($strands) {
+    $color: nth($strands, $i);
+    .#{$color} {
+        background: nth($strandcolours, $i);
+
+        h4 { color: white; }
+        .ire { color: $navy; }
+    }
+}
+
+
+
+
+// Navigation
+
+.top-bar {
+  padding: 20px 0;
+  height: 80px;
+}
+
+
+.top-bar-section {
+  li a {
+    line-height: 1.5em !important;
+    span {
+      display: block;
+    }
+  }
+}
+
+// Home
+
+#home {
+
+  // padding: 100px 0;
+}
+
+
+.intro {
+  background: lighten(red, 30%) center center no-repeat;
+  background-size: cover;
+  height: 600px;
+  position: relative;
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(255,255,255,.9);
+    padding: rem-calc(30) 0;
+  }
+}
+
+.highlights {
+  background: lighten($gold, 40%);
+  padding: 50px 0 100px 0;
+  overflow: hidden;
+  .tiles {
+    float: left;
+    width: rem-calc(3000);
+    padding: 0 rem-calc(10);
+  }
+}
+
+.highlight {
+  float: left;
+  width: rem-calc(530);
+  margin-right: rem-calc(20);
+
+  img {
+    width: 100%;
+    max-height: rem-calc(300);
+  }
+  .info {
+    padding: rem-calc(20) rem-calc(23);
+    height: rem-calc(250);
+  }
+}
+
+
+.event {
+
+}
+
+
+.heading {
+  margin-bottom: 40px;
+}
+
+
+
+
+
