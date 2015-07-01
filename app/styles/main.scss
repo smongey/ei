@@ -1,55 +1,269 @@
 // bower:scss
 // endbower
 
-
 @import "foundation";
-
 
 // Variables
 $navy: #053341;
 $gold: #9e8c5d;
+$darkgold: darken($gold, 10%);
+$lightgold: lighten($gold, 40%);
 
-$state: #63b428;
-$historic: #14825f;
-$language: #0f81ad;
-$youth: #cf568c;
-$culture: #7a2b88;
+$state: #93bd50;
+$historic: #009474;
+$language: #009cbc;
+$youth: #c3608d;
+$culture: #a664b5;
 $community: #e6263a;
 $global: #f27f0a;
 $strands: state, historic, language, youth, culture, community, global;
 $strandcolours: $state, $historic, $language, $youth, $culture, $community, $global;
+$serif: 'Alegreya', Palatino, Times, serif;
+$sans: 'Karla', Helvetica, sans-serif;
 
 
 .browserupgrade { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }
 
+::selection { background: lighten($gold, 30%); }
+::-moz-selection { background: lighten($gold, 30%); }
+
+
+
 // Type
-
 * { -webkit-font-smoothing: antialiased; }
-
 body {
-  font-family: 'Alegreya', Palatino, Times, serif;
+  font-family: $serif;
   color: $navy;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 h1, h2, h3 {
-  font-family: 'Karla', Helvetica, sans-serif;
+  font-family: $sans;
   font-weight: 700;
   letter-spacing: -1.5px;
   color: $navy;
   line-height: 1.2em;
 }
 
+h4, h5, h6 {
+  font-family: $sans;
+  letter-spacing: -.8px;
+  line-height: 1.2em;
+}
+
 // Utilities
 
+.button {
+  background: $gold;
+  text-transform: uppercase;
+  font-family: $sans;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
 .ire {
-  color: darken($gold, 10%);
+  color: $darkgold;
 }
 
 .break {
   display: block;
 }
 
-.more {
+a.more {
+  display: block;
+  font-family: $sans;
+  color: $gold; 
+  font-size: rem-calc(15);
+  padding-left: rem-calc(3);
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  margin-top: rem-calc(20);
+  position: absolute;
+  &::after {
+    content: ''; 
+    display: block;
+    position: absolute;
+    right: rem-calc(-19);
+    top: rem-calc(6);
+    width: rem-calc(8);
+    height: rem-calc(8);
+    background: transparent;
+    border-right: 2px solid $gold;
+    border-top: 2px solid $gold;
+    transform: rotate(45deg);
+    margin-left: rem-calc(5);
+    transition: all ease .2s;
+  }
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: rem-calc(-27);
+    top: 0;
+    width: rem-calc(20);
+    height: rem-calc(20);
+    background: rgba(255,255,255,.2);
+    border-radius: 100%;
+    transition: all ease .2s
+  }
+  &:hover {
+    &::after {
+      margin-left: rem-calc(10);
+    }
+    &::before {
+      transform: scale(1.5);
+      opacity: .3;
+    }
+  }
+}
+
+// Event and Strands
+
+
+.event {
+  
+
+  height: rem-calc(500);
+  margin-bottom: rem-calc(20);
+  overflow: hidden;
+  // full
+  &.large-12, &.large-8 {
+    .info {
+      float: right;
+      width: calc(33% - 10px);
+      @media #{$medium-only} { 
+        width: calc(50% - 10px);
+
+      }
+      @media #{$small-only} { 
+        width: 100% !important;
+      }
+      a.more {
+        bottom: rem-calc(30);
+      }
+    }
+    .image {
+      position: relative;
+      display: block;
+      width: calc(67% + 10px);
+      @media #{$medium-only} { 
+        width: calc(50% + 10px);
+      }
+      @media #{$small-only} { 
+        width: 100%;
+      }
+      height: rem-calc(500);
+      overflow: hidden;
+      background: center center no-repeat;
+    }
+
+    .left { background-position: left center; }
+    .middle { background-position: center center; }
+    .right { background-position: right center; } 
+  }
+
+
+  // two thirds
+  &.large-8 {
+    .info {
+      width: calc(50% - 10px);
+    }
+    .image {
+      width: calc(50% + 10px);
+    }
+  }
+
+
+  // one third
+  .info {
+    background: $lightgold;
+    padding: rem-calc(12) rem-calc(25);
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    .date {
+      color: $darkgold;
+      font-size: rem-calc(20);
+    }
+    .eventtype, .newstype {
+      position: absolute;
+      right: rem-calc(25);
+      top: rem-calc(20);
+      text-align: right;
+      font-family: $sans;
+      text-transform: uppercase;
+      color: $darkgold;
+      font-size: rem-calc(14);
+      letter-spacing: .5px;
+      height: rem-calc(20);
+      &::before {
+        content: 'Event';
+        display: block;
+        transition: all ease .2s;
+      }
+      &::after {
+        content: 'Imeachtaí';
+        display: block;
+        opacity: 0;
+        transition: all ease .2s;
+      }
+    }
+    .newstype {
+      &::before {
+        content: 'News';
+      }
+      &::after {
+        content: 'Nuacht';
+      }
+    }
+    &:hover {
+      .eventtype, .newstype {
+        &::before {
+          margin-top: rem-calc(-21);
+          opacity: 0;
+        }
+        &::after {
+          opacity: 1;
+        }
+      }
+    }    
+    h4 {
+      padding: rem-calc(15) 0;
+      font-family: $serif;
+      font-size: rem-calc(26);
+      color: $navy;
+    }
+    span.ire {
+      color: $darkgold;
+    }
+    p {
+      color: white;
+      margin-bottom: 0;
+      font-size: rem-calc(17);
+    }
+    p.ire {
+      color: $navy;
+    }
+    a.more {
+      bottom: rem-calc(210);
+      color: $navy;
+      &::after {
+        border-color: $navy;
+      }
+    }
+    img {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      // height: 200px;
+    }
+  }
 
 }
 
@@ -63,62 +277,174 @@ h1, h2, h3 {
         h4 { color: white; }
         .ire { color: $navy; }
     }
+    .event .#{$color} {
+        background: nth($strandcolours, $i);
+        .date {
+          color: white;
+        }
+        .eventtype, .newstype {
+          color: rgba(255,255,255,.6);
+        }
+        h4 { color: white; }
+        span.ire { color: $navy; }
+    }
+    .icon-#{$color} {
+      display: inline-block;
+      width: rem-calc(30);
+      height: rem-calc(30);
+      background: white;
+      text-align: center;
+      color: nth($strandcolours, $i);
+      // text-indent: rem-calc(-9999);
+      margin-right: rem-calc(10);
+    }
 }
-
-
 
 
 // Navigation
 
+
 .top-bar {
   padding: 20px 0;
-  height: 80px;
+  height: 90px;
+}
+
+.contain-to-grid, .top-bar {
+  background: #0a3740;
+  background: -moz-linear-gradient(top, #0a3740 0%, #0b4042 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0a3740), color-stop(100%,#0b4042));
+  background: -webkit-linear-gradient(top, #0a3740 0%,#0b4042 100%);
+  background: -o-linear-gradient(top, #0a3740 0%,#0b4042 100%);
+  background: -ms-linear-gradient(top, #0a3740 0%,#0b4042 100%);
+  background: linear-gradient(to bottom, #0a3740 30%,#0b4042 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a3740', endColorstr='#0b4042',GradientType=0 );
+}
+
+.top-bar-section li:not(.has-form) a:not(.button), .top-bar-section li:not(.has-form) a:not(.button):hover {
+  background: transparent;
 }
 
 
 .top-bar-section {
-  li a {
-    line-height: 1.5em !important;
-    span {
-      display: block;
+  ul li {
+    background: transparent;
+    a {
+      font-size: rem-calc(18);
+      font-family: $serif;
+      line-height: 1.5em !important;
+      span.ire {
+        display: block;
+        line-height: 1em;
+        color: $gold;
+      }
     }
   }
 }
 
-// Home
+
+// Footer
+
+footer.container {
+  background: $navy;
+  padding: rem-calc(50) 0 rem-calc(30) 0;
+  ul {
+    margin-left: 0;
+  }
+  li, p {
+    list-style-type: none;
+    color: $gold;
+    font-size: rem-calc(14);
+    line-height: rem-calc(20);
+    font-family: $sans;
+    margin-bottom: rem-calc(10);
+    opacity: .7;
+  }
+  .ire {
+    color: $gold;
+  }
+  .title {
+    font-weight: 700;
+    opacity: 1;
+  }
+  .title span.ire {
+    font-style: italic;
+  }
+  a {
+    color: $gold;
+  }
+  a:hover {
+    color: $gold;
+    border-bottom: 1px solid $gold;
+  }
+}
+
+
+
+
+
+// Homepage specific componenets
 
 #home {
 
-  // padding: 100px 0;
+  // intro
+  .intro {
+    background: $gold center center no-repeat;
+    background-size: cover;
+    height: 600px;
+    position: relative;
+    @media #{$small-only} {
+      height: inherit;
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(255,255,255,.9);
+      padding: rem-calc(25) 0 rem-calc(40);
+      @media #{$small-only} {
+        background: rgba(255,255,255,1);
+        position: relative;
+        // padding: rem-calc(0);
+        bottom: inherit;
+      }
+    }
+  }
+
+  // about
+  .about {
+    background: $lightgold;
+  }
+
+  // highlights
+  .highlights {
+    background: $lightgold;
+   
+    overflow: hidden;
+    .tiles {
+      float: left;
+      width: rem-calc(3000);
+      padding: 0 rem-calc(10);
+    }
+  }
+
+  // signup (this will be needed on about page also so remove from #home)
+  input.submit {
+    display: block;
+  }
+
 }
 
 
-.intro {
-  background: lighten(red, 30%) center center no-repeat;
-  background-size: cover;
-  height: 600px;
-  position: relative;
-  .overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(255,255,255,.9);
-    padding: rem-calc(30) 0;
+section.container {
+  padding: rem-calc(50) 0 rem-calc(100) 0;
+  @media #{$small-only} {
+    padding: rem-calc(20) 0 0 0;
   }
 }
 
-.highlights {
-  background: lighten($gold, 40%);
-  padding: 50px 0 100px 0;
-  overflow: hidden;
-  .tiles {
-    float: left;
-    width: rem-calc(3000);
-    padding: 0 rem-calc(10);
-  }
-}
-
+// individual homepage highlight
 .highlight {
+  position: relative;
   float: left;
   width: rem-calc(530);
   margin-right: rem-calc(20);
@@ -131,16 +457,28 @@ h1, h2, h3 {
     padding: rem-calc(20) rem-calc(23);
     height: rem-calc(250);
   }
-}
-
-
-.event {
-
+  footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: rem-calc(0) rem-calc(23) rem-calc(20);
+  }
+  .date {
+    font-family: $sans;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.6);
+  }
 }
 
 
 .heading {
   margin-bottom: 40px;
+  @media #{$small-only} {
+    span {
+      display: block;
+    }
+  }
 }
 
 
