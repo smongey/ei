@@ -23,6 +23,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-web:before {
+	content: "\e613";
+}
 .icon-state:before {
 	content: "\e600";
 }

@@ -8,7 +8,7 @@
 $navy: #053341;
 $gold: #9e8c5d;
 $darkgold: darken($gold, 10%);
-$lightgold: lighten($gold, 40%);
+$lightgold: lighten($gold, 42%);
 
 $state: #93bd50;
 $historic: #009474;
@@ -97,6 +97,42 @@ hr { border-color: lighten($gold, 25%); }
     .icon-twitter, .icon-facebook {
       color: white;
     }
+  }
+}
+
+
+.arrowleft, .arrowright {
+  background: white;
+  display: inline-block;
+  border-radius: 100%;
+  width: rem-calc(35);
+  height: rem-calc(35);
+  margin: 0 0 0 rem-calc(5);
+  text-align: center;
+  padding: rem-calc(5);
+  transition: $trans;
+  &:hover {
+    background: $gold;
+  }
+  &.hide {
+    opacity: 0;
+  }
+}
+
+.icon-arrow {
+  font-size: rem-calc(26);
+  display: inline-block;
+  color: $darkgold;
+  transition: $trans;
+  &.pointleft {
+    transform: rotate(90deg);
+    margin-left: rem-calc(-3);
+  }
+  &.pointright {
+    transform: rotate(-90deg);
+  }
+  &:hover {
+    color: white;
   }
 }
 
@@ -216,6 +252,25 @@ section.container {
     .left { background-position: left center; }
     .middle { background-position: center center; }
     .right { background-position: right center; } 
+  
+    .strands & {
+      .info {
+        background: $navy;
+        width: 100%;
+        padding: rem-calc(25) 20% rem-calc(25) rem-calc(30);
+        h2 { 
+          color: white; 
+          margin-bottom: rem-calc(50);
+        }
+        p {
+          font-size: rem-calc(20);
+        }
+        .ire {
+          color: $gold;
+        }
+      } 
+    }
+
   }
 
   // two thirds
@@ -365,6 +420,13 @@ section.container {
     float: left !important;
   }
 
+  .strands & {
+    height: rem-calc(500);
+    .info {
+      height: 100%;
+    }
+  }
+
 }
 
 
@@ -396,8 +458,14 @@ section.container {
     position: absolute;
     bottom: rem-calc(-25);
     right: rem-calc(-15);
+    .strands & {
+     font-size: rem-calc(50);
+     bottom: rem-calc(20);
+     right: rem-calc(15);
+     color: white;
+    }
   }
-  div.title.#{$color} {
+  div.title.#{$color}, .details.#{$color} {
     background: nth($strandcolours, $i);
     h1 span.ire { color: $navy; }
   }
@@ -428,6 +496,14 @@ section.container {
 
 }
 
+.single {
+  & > div.row:last-child {
+    & > div > div {
+      padding-bottom: rem-calc(50);
+    }
+  }
+}
+
 .reminders {
   background: $lightgold;
 }
@@ -454,11 +530,94 @@ div.title {
 }
 
 .details {
+  @extend div.title;
+  border-top: 1px solid rgba(0,0,0,.1);
+  padding-bottom:rem-calc(30);
+  ul, li {
+    list-style-type: none;
+    margin: 0; 
+    padding: 0;
+  }
+  .icon {
+    width: 10%;
+    float: left;
+    height: 100%;
+    span {
+      font-size: rem-calc(36);
+      color: white;
+      line-height: rem-calc(30);
+    }
+    .icon-location {
+      font-size: rem-calc(28);
+    }
+    .icon-web {
+      font-size: rem-calc(40);
+      line-height: rem-calc(30);
+    }
+  }
+  .info {
+    float: left;
+    width: 45%;
+    padding-right: rem-calc(10);
+    li, p, a {
+      color: white;
+      font-family: $sans;
+    } 
+    li {
+      line-height: rem-calc(20);
+    }
+    li.title {
+      margin-top: rem-calc(5);
+      font-weight: 700;
+    }
+    li.link {
+      background: rgba(0,0,0,.1);
+      display: inline-block;
+      width: inherit;
+      padding: rem-calc(5) rem-calc(25) rem-calc(5) rem-calc(10);
+      position: relative;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: rem-calc(12);
+      margin-top: rem-calc(10);
+      letter-spacing: rem-calc(.5);
+      transition: $trans;
+      &:hover {
+        background: $navy;
+      }
+    }
+    .icon-link {
+      font-size: rem-calc(28);
+      line-height: rem-calc(0);
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: rem-calc(14);
+    }
+  }
+  .cal {
+    .icon {
+      width: 15%;
+    }
+  }
+  .site {
+    li {
+      font-size: rem-calc(14);
+      text-transform: uppercase;
+    }
+    .icon {
+      width: 20%;
+    }
+    .info {
+      width: 80%;
+    }
+  }
 
 }
 
+
 .standfirst {
-  padding: rem-calc(20) rem-calc(0) rem-calc(70) rem-calc(30);
+  padding: rem-calc(20) rem-calc(0) rem-calc(40) rem-calc(30);
   background: $lightgold;
   .reminders & {
     background: white;
@@ -480,11 +639,41 @@ div.title {
 }
 
 .text {
+  padding: rem-calc(30) rem-calc(30) rem-calc(20) rem-calc(30);
+  background: $lightgold;
 
+  .large-4:last-of-type {
+    float: left;
+  }
+  p {
+    padding-bottom: rem-calc(15);
+  }
 }
 
 .image {
-
+  figure {
+    margin: 0 !important;
+  }
+  figcaption {
+    position: absolute;
+    top: rem-calc(30);
+    left: rem-calc(45);
+    color: white;
+    font-family: $sans;
+    font-weight: 700;
+    font-size: rem-calc(15);
+    line-height: rem-calc(20);
+    .ire {
+      color: white;
+      font-weight: normal;
+    }
+  }
+  .dark {
+    color: $navy;
+    .ire {
+      color: $navy;
+    }
+  }
 }
 
 .video {
@@ -492,16 +681,43 @@ div.title {
 }
 
 .slideshow {
+  background: lighten($lightgold, 5%);
+  height: rem-calc(450);
+  overflow: hidden;
+  box-shadow: inset 1px 1px 0 0 $gold;
+  ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+ 
+  .arrows {
+    position: absolute;
+    bottom: rem-calc(20);
+    left: rem-calc(30);
+    li {
+      display: inline-block;
+    }
+  }
+
+  .caption {
+    padding: rem-calc(20) rem-calc(30) rem-calc(20) rem-calc(10);  
+    font-family: $sans;
+    letter-spacing: rem-calc(-.3);  
+  }
+
+  .slide, .caption {
+    display: none;
+  }
+  .active {
+    display: block;
+  }
 
 }
 
 .events {
   margin-top: rem-calc(20);
 }
-
-
-
-
 
 
 // Navigation
@@ -739,40 +955,6 @@ section.uptodate {
       width: rem-calc(3000);
       padding: 0 rem-calc(10);
     }
-  
-    .right {
-      a {
-        background: white;
-        display: inline-block;
-        border-radius: 100%;
-        width: rem-calc(35);
-        height: rem-calc(35);
-        margin: 0 0 0 rem-calc(5);
-        text-align: center;
-        padding: rem-calc(5);
-        transition: $trans;
-        &:hover {
-          background: $gold;
-        }
-      }
-    }
-    .icon-arrow {
-      font-size: rem-calc(26);
-      display: inline-block;
-      color: $darkgold;
-      transition: $trans;
-      &.pointleft {
-        transform: rotate(90deg);
-        margin-left: rem-calc(-3);
-      }
-      &.pointright {
-        transform: rotate(-90deg);
-      }
-      &:hover {
-        color: white;
-      }
-    }
-
   }
 
   // signup (this will be needed on about page also so remove from #home)
