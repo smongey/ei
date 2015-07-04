@@ -2,6 +2,7 @@
 // endbower
 
 @import "foundation";
+@import "icomoon";
 
 // Variables
 $navy: #053341;
@@ -21,12 +22,17 @@ $strandcolours: $state, $historic, $language, $youth, $culture, $community, $glo
 $serif: 'Alegreya', Palatino, Times, serif;
 $sans: 'Karla', Helvetica, sans-serif;
 
+$trans: all ease .2s;
 
 .browserupgrade { margin: 0.2em 0; background: #ccc; color: #000; padding: 0.2em 0; }
 
 ::selection { background: lighten($gold, 30%); }
 ::-moz-selection { background: lighten($gold, 30%); }
 
+::-webkit-input-placeholder { color: $gold; }
+:-moz-placeholder { color: $gold; }
+::-moz-placeholder { color: $gold; }
+:-ms-input-placeholder { color: $gold; }
 
 
 // Type
@@ -35,7 +41,6 @@ body {
   font-family: $serif;
   color: $navy;
 }
-
 p {
   margin-bottom: 0;
 }
@@ -54,6 +59,8 @@ h4, h5, h6 {
   line-height: 1.2em;
 }
 
+hr { border-color: lighten($gold, 25%); }
+
 // Utilities
 
 .button {
@@ -62,6 +69,35 @@ h4, h5, h6 {
   font-family: $sans;
   letter-spacing: 1px;
   font-weight: 700;
+  &:hover {
+    background: $darkgold;
+  }
+}
+
+.circle {
+  display: inline-block;
+  width: rem-calc(38);
+  height: rem-calc(38);
+  background: white;
+  border-radius: 100%;
+  transition: $trans;
+  text-align: center;
+  margin: 0 rem-calc(10) 0 0;
+  padding: 0;
+  
+  .icon-twitter, .icon-facebook {
+    font-size: rem-calc(30);
+    display: inline-block;
+    line-height: rem-calc(40);
+    color: $gold;
+  }
+
+  &:hover {
+    background: $gold;
+    .icon-twitter, .icon-facebook {
+      color: white;
+    }
+  }
 }
 
 .ire {
@@ -82,7 +118,10 @@ a.more {
   letter-spacing: .5px;
   text-transform: uppercase;
   margin-top: rem-calc(20);
+  width: rem-calc(70);
   position: absolute;
+  transition: $trans;
+  bottom: rem-calc(20);
   &::after {
     content: ''; 
     display: block;
@@ -96,7 +135,7 @@ a.more {
     border-top: 2px solid $gold;
     transform: rotate(45deg);
     margin-left: rem-calc(5);
-    transition: all ease .2s;
+    transition: $trans;
   }
   &::before {
     content: '';
@@ -108,7 +147,7 @@ a.more {
     height: rem-calc(20);
     background: rgba(255,255,255,.2);
     border-radius: 100%;
-    transition: all ease .2s
+    transition: $trans
   }
   &:hover {
     &::after {
@@ -121,20 +160,31 @@ a.more {
   }
 }
 
+// Spacing
+
+section.container {
+  padding: rem-calc(40) 0 rem-calc(100) 0;
+  @media #{$small-only} {
+    padding: rem-calc(20) 0 0 0;
+  }
+}
+
+
+
 // Event and Strands
 
 
 .event {
-  
 
-  height: rem-calc(500);
   margin-bottom: rem-calc(20);
   overflow: hidden;
+
   // full
   &.large-12, &.large-8 {
     .info {
       float: right;
       width: calc(33% - 10px);
+      height: rem-calc(488);
       @media #{$medium-only} { 
         width: calc(50% - 10px);
 
@@ -143,22 +193,24 @@ a.more {
         width: 100% !important;
       }
       a.more {
-        bottom: rem-calc(30);
+        @media #{$large-up} {
+          bottom: rem-calc(30);
+        }
       }
     }
-    .image {
+    .pic {
       position: relative;
       display: block;
       width: calc(67% + 10px);
+      height: rem-calc(488);
+      overflow: hidden;
+      background: center center no-repeat;
       @media #{$medium-only} { 
         width: calc(50% + 10px);
       }
       @media #{$small-only} { 
         width: 100%;
       }
-      height: rem-calc(500);
-      overflow: hidden;
-      background: center center no-repeat;
     }
 
     .left { background-position: left center; }
@@ -166,23 +218,50 @@ a.more {
     .right { background-position: right center; } 
   }
 
-
   // two thirds
   &.large-8 {
     .info {
       width: calc(50% - 10px);
     }
-    .image {
+    .pic {
       width: calc(50% + 10px);
     }
   }
 
+  // half 
+  &.large-6 {
+    .info {
+      // padding-right: rem-calc(150);
+      height: rem-calc(250);
+      .reminders & {
+        background: white;
+      }
+      a.more {
+        bottom: inherit;
+        color: $gold;
+        position: absolute;
+        bottom: rem-calc(20);
+        &::before, &::after {
+          border-color: $gold;
+        }
+        &:hover {
+          color: $navy;
+          &::before, &::after {
+            border-color: $navy;
+          }
+        }
+      }
+    }
+    img {
+      width: 100%;
+    }
+  }
 
   // one third
   .info {
     background: $lightgold;
     padding: rem-calc(12) rem-calc(25);
-    height: 100%;
+    height: rem-calc(300);
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -204,13 +283,25 @@ a.more {
       &::before {
         content: 'Event';
         display: block;
-        transition: all ease .2s;
+        transition: $trans;
       }
       &::after {
         content: 'Imeachtaí';
         display: block;
         opacity: 0;
-        transition: all ease .2s;
+        transition: $trans;
+      }
+    }
+    .icon-location {
+      position: absolute;
+      right: rem-calc(20);
+      top: rem-calc(20);
+      color: $gold;
+      font-size: rem-calc(26);
+      transition: $trans;
+
+      &:hover {
+        color: $navy;
       }
     }
     .newstype {
@@ -235,7 +326,7 @@ a.more {
     h4 {
       padding: rem-calc(15) 0;
       font-family: $serif;
-      font-size: rem-calc(26);
+      font-size: rem-calc(24);
       color: $navy;
     }
     span.ire {
@@ -250,10 +341,15 @@ a.more {
       color: $navy;
     }
     a.more {
-      bottom: rem-calc(210);
       color: $navy;
       &::after {
         border-color: $navy;
+      }
+      &:hover {
+        color: $gold;
+        &::after {
+           border-color: $gold;
+        }
       }
     }
     img {
@@ -265,40 +361,147 @@ a.more {
     }
   }
 
+  &:last-of-type {
+    float: left !important;
+  }
+
 }
 
 
+// Strand specific loop
 
 @for $i from 1 through length($strands) {
-    $color: nth($strands, $i);
-    .#{$color} {
-        background: nth($strandcolours, $i);
+  $color: nth($strands, $i);
+  .#{$color} {
+    background: nth($strandcolours, $i);
 
-        h4 { color: white; }
-        .ire { color: $navy; }
+    h4 { color: white; }
+    .ire { color: $navy; }
+    .location span.icon-location { color: white; }
+  }
+  .event .#{$color} {
+      background: nth($strandcolours, $i);
+      .date {
+        color: white;
+      }
+      .eventtype, .newstype {
+        color: rgba(255,255,255,.6);
+      }
+      h4 { color: white; }
+      span.ire { color: $navy; }
+  }
+  .event .icon-#{$color} {
+    color: rgba(0,0,0,.1);
+    font-size: rem-calc(170);
+    position: absolute;
+    bottom: rem-calc(-25);
+    right: rem-calc(-15);
+  }
+  div.title.#{$color} {
+    background: nth($strandcolours, $i);
+    h1 span.ire { color: $navy; }
+  }
+  .icon-#{$color} {
+    display: inline-block;
+    font-size: rem-calc(32);
+    color: nth($strandcolours, $i);
+    // text-indent: rem-calc(-9999);
+    margin-right: rem-calc(10);
+    .highlight & {
+      color: white;
     }
-    .event .#{$color} {
-        background: nth($strandcolours, $i);
-        .date {
-          color: white;
-        }
-        .eventtype, .newstype {
-          color: rgba(255,255,255,.6);
-        }
-        h4 { color: white; }
-        span.ire { color: $navy; }
+  }
+  .info.#{$color} {
+    a.more:hover {
+      color: white;
+      &::after {
+         border-color: white;
+      }
     }
-    .icon-#{$color} {
-      display: inline-block;
-      width: rem-calc(30);
-      height: rem-calc(30);
-      background: white;
-      text-align: center;
-      color: nth($strandcolours, $i);
-      // text-indent: rem-calc(-9999);
-      margin-right: rem-calc(10);
-    }
+  }
 }
+
+
+// Category specific events, eg location/partner/
+
+.category {
+
+}
+
+.reminders {
+  background: $lightgold;
+}
+
+// Single modules 
+
+div.title {
+  background: $navy;
+  padding: rem-calc(25) rem-calc(30) rem-calc(70) rem-calc(30);
+  height: inherit;
+  overflow: auto; 
+  h1 { 
+    color: white;
+    font-size: rem-calc(58);
+    line-height: rem-calc(58);
+    letter-spacing: rem-calc(-2);
+    &.ire {
+      color: $gold;
+    }
+  }
+  .right {
+    span { color: white; }
+  }
+}
+
+.details {
+
+}
+
+.standfirst {
+  padding: rem-calc(20) rem-calc(0) rem-calc(70) rem-calc(30);
+  background: $lightgold;
+  .reminders & {
+    background: white;
+  }
+  h3 {
+    font-family: $serif;
+    font-weight: normal;
+    letter-spacing: 0;
+    font-size: rem-calc(26);
+    margin-bottom: 0;
+  }
+  .share {
+    padding: rem-calc(20) rem-calc(25);
+    background: rgba(255,255,255,.5);
+    margin-top: rem-calc(20);
+    border-top: 1px solid lighten($gold, 25%);
+    min-height: rem-calc(200);
+  }
+}
+
+.text {
+
+}
+
+.image {
+
+}
+
+.video {
+
+}
+
+.slideshow {
+
+}
+
+.events {
+  margin-top: rem-calc(20);
+}
+
+
+
+
 
 
 // Navigation
@@ -307,6 +510,16 @@ a.more {
 .top-bar {
   padding: 20px 0;
   height: 90px;
+  span.icon-logo {
+    font-size: rem-calc(80);
+    line-height: rem-calc(48);
+    &.second {
+      color: $gold;
+      margin-left: rem-calc(-78.5);
+      -webkit-clip-path: polygon(0 47%, 37% 47%, 37% 58%, 0 59%);
+      clip-path: polygon(0 47%, 37% 47%, 37% 58%, 0 59%);
+    }
+  }
 }
 
 .contain-to-grid, .top-bar {
@@ -324,12 +537,24 @@ a.more {
   background: transparent;
 }
 
-
 .top-bar-section {
+  ul li a {
+      margin: 0 !important; 
+      padding: 0 !important;
+  }
+}
+
+.primary {
   ul li {
+    // display: inline-block;
     background: transparent;
+    padding: 0 rem-calc(35) 0 0;
+    &:last-child, &:nth-last-child(2) {
+      padding: 0;
+    }
     a {
-      font-size: rem-calc(18);
+      color: white;
+      font-size: rem-calc(17);
       font-family: $serif;
       line-height: 1.5em !important;
       span.ire {
@@ -340,6 +565,16 @@ a.more {
     }
   }
 }
+
+.icon-twitter, .icon-facebook {
+  font-size: rem-calc(32);
+  display: inline-block;
+  line-height: rem-calc(44);
+  a & {
+    padding: 0 !important;
+  }
+}
+
 
 
 // Footer
@@ -359,35 +594,76 @@ footer.container {
     margin-bottom: rem-calc(10);
     opacity: .7;
   }
-  .ire {
-    color: $gold;
-  }
-  .title {
+  li.title {
     font-weight: 700;
     opacity: 1;
   }
-  .title span.ire {
+  li.title span.ire {
     font-style: italic;
   }
-  a {
+  a, a span.ire {
     color: $gold;
+    transition: $trans;
   }
-  a:hover {
-    color: $gold;
-    border-bottom: 1px solid $gold;
+  a:hover, a:hover span.ire {
+    color: white;
+  }
+  a.icon-harp {
+    font-size: rem-calc(46);
+    transition: $trans;
+    &:hover {
+      color: $darkgold;
+    }
   }
 }
 
 
+section.uptodate {
+  background: $lightgold;
+  padding-bottom: rem-calc(60);
+  h4 {
+    font-weight: 700;
+  }
+  h5 {
+    margin-bottom: rem-calc(20);
+  }
+  a.button.tiny {
+    margin-top: rem-calc(20);
+  }
+  .social {
+    a {
+      display: inline-block;
+      width: rem-calc(38);
+      height: rem-calc(38);
+      background: white;
+      border-radius: 100%;
+      transition: $trans;
+      text-align: center;
+      margin: 0 rem-calc(10) 0 0;
+      padding: 0 rem-calc(2);
+      &:hover {
+        background: $gold;
+        .icon-twitter, .icon-facebook {
+          color: white;
+        }
+      }
+    }
 
+    .icon-twitter, .icon-facebook {
+      color: $gold;
+      font-size: rem-calc(28);
+      line-height: rem-calc(38);
+    }
+  }
+
+
+}
 
 
 // Homepage specific componenets
-
 #home {
-
   // intro
-  .intro {
+  .hero {
     background: $gold center center no-repeat;
     background-size: cover;
     height: 600px;
@@ -400,7 +676,7 @@ footer.container {
       bottom: 0;
       width: 100%;
       background: rgba(255,255,255,.9);
-      padding: rem-calc(25) 0 rem-calc(40);
+      padding: rem-calc(30) 0 rem-calc(60);
       @media #{$small-only} {
         background: rgba(255,255,255,1);
         position: relative;
@@ -413,18 +689,90 @@ footer.container {
   // about
   .about {
     background: $lightgold;
+  
+    .video {
+      & > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        transform: translate(-50%, -50%);
+        transition: $trans;
+        span.icon-play {
+          float: left; 
+          font-size: rem-calc(64);
+          color: white;
+          width: 20%;
+          transition: $trans;
+        } 
+        h3 {
+          float: right;
+          color: white;
+          width: 80%;
+          transition: $trans;
+          span.ire {
+            color: white;
+            font-weight: normal;
+            transition: $trans;
+          }
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        .icon-play, h3, .ire {
+          color: $gold;
+            transition: $trans;
+        }
+
+      }
+    }
+
   }
 
   // highlights
   .highlights {
     background: $lightgold;
-   
     overflow: hidden;
+
     .tiles {
       float: left;
       width: rem-calc(3000);
       padding: 0 rem-calc(10);
     }
+  
+    .right {
+      a {
+        background: white;
+        display: inline-block;
+        border-radius: 100%;
+        width: rem-calc(35);
+        height: rem-calc(35);
+        margin: 0 0 0 rem-calc(5);
+        text-align: center;
+        padding: rem-calc(5);
+        transition: $trans;
+        &:hover {
+          background: $gold;
+        }
+      }
+    }
+    .icon-arrow {
+      font-size: rem-calc(26);
+      display: inline-block;
+      color: $darkgold;
+      transition: $trans;
+      &.pointleft {
+        transform: rotate(90deg);
+        margin-left: rem-calc(-3);
+      }
+      &.pointright {
+        transform: rotate(-90deg);
+      }
+      &:hover {
+        color: white;
+      }
+    }
+
   }
 
   // signup (this will be needed on about page also so remove from #home)
@@ -432,15 +780,74 @@ footer.container {
     display: block;
   }
 
-}
+  .signup {
 
+    position: relative;
 
-section.container {
-  padding: rem-calc(50) 0 rem-calc(100) 0;
-  @media #{$small-only} {
-    padding: rem-calc(20) 0 0 0;
+    .large-1 {
+      text-align: center; 
+      span { 
+        position: absolute;
+        width: rem-calc(1);
+        height: rem-calc(160);
+        background: lighten($gold, 30%);
+      }
+    }
+
+    a {
+      display: inline-block;
+      width: rem-calc(38);
+      height: rem-calc(38);
+      background: $lightgold;
+      border-radius: 100%;
+      transition: $trans;
+      text-align: center;
+      margin: rem-calc(20) rem-calc(10) 0 0;
+      padding: 0 rem-calc(2);
+      &:hover {
+        background: $gold;
+        .icon-twitter, .icon-facebook {
+          color: white;
+        }
+      }
+    }
+
+    .icon-twitter, .icon-facebook {
+      color: $gold;
+      font-size: rem-calc(28);
+      line-height: rem-calc(38);
+    }
+    label {
+      color: $navy;
+      font-family: $sans;
+      font-size: rem-calc(14);
+    }
+
+    input[type="text"] {
+      border: none;
+      background: $lightgold;
+      box-shadow: none;
+      padding: rem-calc(16);
+      color: $gold;
+      margin-top: rem-calc(10);
+      font-size: rem-calc(14);
+      height: inherit;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    input[type="submit"] {
+      margin-top: rem-calc(31);
+      padding: rem-calc(17);
+      font-weight: 700;
+    }
+    input[type="submit"]:focus {
+      background: $navy;
+      outline: none;
+    }
   }
+
 }
+
 
 // individual homepage highlight
 .highlight {
@@ -471,17 +878,125 @@ section.container {
   }
 }
 
-
 .heading {
-  margin-bottom: 40px;
+  margin-bottom: rem-calc(30);
+  
+  .right {
+    vertical-align: top;
+  }
+
+  form.search {
+    float: left;
+    position: relative;
+    input { 
+      // display: inline-block;
+      display: block;
+      float: left;
+      background: $lightgold;
+      padding: rem-calc(10) !important;
+      border: none;
+      height: inherit;
+      box-shadow: none;
+      font-size: rem-calc(18);
+      width: rem-calc(45);
+      transition: $trans;
+    }
+    input.open {
+      width: rem-calc(250); 
+    }
+    span.icon-search {
+      position: absolute;
+      font-size: rem-calc(36);
+      padding: rem-calc(5) rem-calc(4) rem-calc(6) rem-calc(4);
+      right: 0;
+      transition: $trans;
+      color: $gold;
+      &:hover {
+        color: $navy;
+      }
+    }
+  }
+
+  .categories {
+    float: left;
+    margin: 0 rem-calc(3);
+    ul {
+      min-width: rem-calc(250);
+      
+    }
+    ul, li { 
+      margin: 0 !important; 
+      padding: 0 !important; 
+    }
+    li {
+      list-style-type: none;
+      a {
+        color: $navy;
+      }
+      &:hover {
+        a {
+          color: $gold;
+        }
+      }
+    }
+    // a {
+    //   color: $navy;
+    //   transition: $trans;
+     
+    // }
+    ul > ul { 
+      position: absolute;
+      display: none;
+      z-index: 9999;
+      &.active {
+        display: block;
+      }
+    }
+    ul > li {
+      display: block;
+      font-family: $sans;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: $lightgold;
+      padding: rem-calc(10) rem-calc(10) rem-calc(10) rem-calc(15) !important;
+      cursor: pointer;
+    }
+    span.icon-arrow {
+      float: right;
+      font-size: rem-calc(26);
+      color: $gold;
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
+    
+
+  }
+
+  .view {
+    
+    float: left;
+  
+    a {
+      display: inline-block;
+      width: rem-calc(45);
+      height: rem-calc(45);
+      background: $lightgold;
+      text-align: center;
+      font-size: rem-calc(35);
+      color: $gold;
+      transition: $trans;
+    }
+    a.active, a:hover {
+      background: $navy;
+      color: white;
+    }
+  }
+
+
   @media #{$small-only} {
     span {
       display: block;
     }
   }
 }
-
-
-
-
-

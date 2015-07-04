@@ -1372,15 +1372,15 @@ $column-gutter: rem-calc(20);
 
 // $include-html-tooltip-classes: $include-html-classes;
 
-// $has-tip-border-bottom: dotted 1px $iron;
+$has-tip-border-bottom: none;
 // $has-tip-font-weight: $font-weight-bold;
 // $has-tip-font-color: $oil;
-// $has-tip-border-bottom-hover: dotted 1px scale-color($primary-color, $lightness: -55%);
+$has-tip-border-bottom-hover: none;
 // $has-tip-font-color-hover: $primary-color;
-// $has-tip-cursor-type: help;
+$has-tip-cursor-type: pointer;
 
 // $tooltip-padding: rem-calc(12);
-// $tooltip-bg: $oil;
+$tooltip-bg: #053341;
 // $tooltip-font-size: rem-calc(14);
 // $tooltip-font-weight: $font-weight-normal;
 // $tooltip-font-color: $white;
@@ -1391,7 +1391,7 @@ $column-gutter: rem-calc(20);
 // $tooltip-font-size-sml: rem-calc(14);
 // $tooltip-radius: $global-radius;
 // $tooltip-rounded: $global-rounded;
-// $tooltip-pip-size: 5px;
+$tooltip-pip-size: 6px;
 // $tooltip-max-width: 300px;
 
 // 34. Top Bar
