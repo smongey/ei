@@ -8,13 +8,19 @@
 		<section class="top-bar-section primary">
 			<ul class="right">
 				<li><a href="#">About <span class="ire">Fúinn</span></a></li>
-				<li><a href="#">Partners <span class="ire">Comhpháirtithe</span></a></li>
+				<li><a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" href="#">Partners <span class="ire">Comhpháirtithe</span></a>
+					<ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+				</li>
 				<li><a href="#">History <span class="ire">Stair</span></a></li>
 				<li><a href="#">Events <span class="ire">Imeachtaí</span></a></li>
 				<li><a href="#">News <span class="ire">Nuacht</span></a></li>
 				<li><a href="#">Contact <span class="ire">Teagmháil</span></a></li>
-				<li><a href="https://twitter.com/ireland2016"><span class="icon-twitter"></span></a></li>
-				<li><a href="https://www.facebook.com/wwwIreland2016"><span class="icon-facebook"></span></a></li>
+				<li class="social"><a href="https://twitter.com/ireland2016"><span class="icon-twitter"></span></a></li>
+				<li class="social"><a href="https://www.facebook.com/wwwIreland2016"><span class="icon-facebook"></span></a></li>
 				<!-- <li class="has-dropdown">
 					<a href="#">Right Button Dropdown</a>
 					<ul class="dropdown">
@@ -26,3 +32,4 @@
 		</section>
 	</nav>
 </div>
+
