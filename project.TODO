@@ -1,0 +1,64 @@
+
+
+Ireland 2016 To Dos
+
+Global:
+
+ ☐ Responsive testing on all components
+
+ ☐ Browser testing on Safari / Firefox / IE... (Annertech)
+
+ ☐ Events Dropdown preventDefault when clicked
+
+ ☐ Page / Asset loading / preloading
+
+ ☐ Page transitions
+
+
+Navigation:
+ 
+ ☐ Dropdown implementation
+
+ ☐ Hover events
+
+
+Single / Page Modules:
+
+ ☐ Related Partners / Permanent Reminders (at bottom of single)
+
+ ☐ Related Events (at bottom of single)
+
+ ☐ Posted on: (right nav item)
+
+ ☐ Video 
+
+ ☐ Text module hyperlinks
+
+
+ Page Specific Module:  
+
+ ☐ Related Items Subnav (right nav item) 
+
+ ☐ The Signatories  (right nav item)
+
+ ☐ Partners Listing
+
+ ☐ Partners Heading
+ 
+ ☐ Partners Dropdown nav
+
+
+ Events:
+
+ ☐ Grid / List view interaction
+
+ ☐ Search Results page
+
+
+
+ Home:
+
+   ☐ Implement video modal
+
+   ☐ Programme Slider interaction
+
