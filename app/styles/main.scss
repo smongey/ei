@@ -74,6 +74,10 @@ hr { border-color: lighten($gold, 25%); }
   }
 }
 
+.dim {
+  opacity: .3;
+}
+
 .circle {
   display: inline-block;
   width: rem-calc(38);
@@ -199,7 +203,7 @@ a.more {
 // Spacing
 
 section.container {
-  padding: rem-calc(40) 0 rem-calc(100) 0;
+  padding: rem-calc(40) 0 rem-calc(40) 0;
   @media #{$small-only} {
     padding: rem-calc(20) 0 0 0;
   }
@@ -367,6 +371,7 @@ section.container {
         content: 'Nuacht';
       }
     }
+
     &:hover {
       .eventtype, .newstype {
         &::before {
@@ -412,9 +417,36 @@ section.container {
       bottom: 0;
       left: 0;
       width: 100%;
-      // height: 200px;
     }
   }
+
+  .graphic { 
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    
+    .scaleme {
+      position:relative;
+      padding: 54.5% 0 0 0;
+      height: 0;
+      
+      .content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
+  // one quarter
+  .large-3 {
+    
+  }
+
+
+
 
   &:last-of-type {
     float: left !important;
@@ -458,6 +490,7 @@ section.container {
     position: absolute;
     bottom: rem-calc(-25);
     right: rem-calc(-15);
+
     .strands & {
      font-size: rem-calc(50);
      bottom: rem-calc(20);
@@ -465,6 +498,12 @@ section.container {
      color: white;
     }
   }
+  .event.large-3 .icon-#{$color}{
+    font-size: rem-calc(90);
+    bottom: rem-calc(0);
+    right: rem-calc(0);
+  }
+
   div.title.#{$color}, .details.#{$color} {
     background: nth($strandcolours, $i);
     h1 span.ire { color: $navy; }
@@ -507,6 +546,7 @@ section.container {
 .reminders {
   background: $lightgold;
 }
+
 
 // Single modules 
 
@@ -636,6 +676,30 @@ div.title {
     border-top: 1px solid lighten($gold, 25%);
     min-height: rem-calc(200);
   }
+  h3 a {
+    color: inherit;
+    position: relative;
+    transition: all ease .1s;
+    &::before {
+      content: ' ';
+      height: 1px;
+      left: 0;
+      bottom: 1px;
+      display: block;
+      position: absolute;
+      width: 100%;
+      background: $navy;
+      transition: all ease .1s;
+    }
+    &:hover {
+      &::before {
+        bottom: 4px;
+      }
+    }
+  }
+  .ire a::before {
+    background: $gold;
+  }
 }
 
 .text {
@@ -647,6 +711,31 @@ div.title {
   }
   p {
     padding-bottom: rem-calc(15);
+  }
+
+  a {
+    color: inherit;
+    position: relative;
+    transition: all ease .1s;
+    &::before {
+      content: ' ';
+      height: 1px;
+      left: 0;
+      bottom: -1px;
+      display: block;
+      position: absolute;
+      width: 100%;
+      background: $navy;
+      transition: all ease .1s;
+    }
+    &:hover {
+      &::before {
+        bottom: 2px;
+      }
+    }
+  }
+  .ire p a::before {
+    background: $gold;
   }
 }
 
@@ -704,6 +793,10 @@ div.title {
     padding: rem-calc(20) rem-calc(30) rem-calc(20) rem-calc(10);  
     font-family: $sans;
     letter-spacing: rem-calc(-.3);  
+    a {
+      color: inherit;
+      border-bottom: 1px dotted $gold;
+    }
   }
 
   .slide, .caption {
@@ -834,6 +927,35 @@ footer.container {
 }
 
 
+
+section.related-partners {
+  padding: rem-calc(20) 0 rem-calc(40);
+  hr { margin-bottom: rem-calc(10); }
+
+  h4 {
+    color: $navy;
+    font-weight: 700;
+  }
+
+  a {
+    font-family: $sans;
+    letter-spacing: rem-calc(-.5);
+    color: $navy;
+    line-height: rem-calc(19);
+  }
+}
+
+
+section.related-events {
+  padding: rem-calc(50) 0 rem-calc(30);
+  background: $lightgold;
+  .heading h4 {
+    color: $navy;
+    font-weight: 700;
+  }
+}
+
+
 section.uptodate {
   background: $lightgold;
   padding-bottom: rem-calc(60);
@@ -907,7 +1029,7 @@ section.uptodate {
   // about
   .about {
     background: $lightgold;
-  
+
     .video {
       & > div {
         position: absolute;

@@ -44,7 +44,7 @@ $('.categories > ul > li').on('click', function(){
 
 // Slideshow Module
 
-$('.slideshow a').on('click', function(e){
+$('.slideshow a.arrowleft, .slideshow a.arrowright').on('click', function(e){
 	e.preventDefault();
 	var $current = $(this).closest('.slideshow'),
 		$currentSlide = $current.find('li.slide.active, li.caption.active'),
@@ -71,23 +71,40 @@ $('.slideshow a').on('click', function(e){
 
 // Highlights Module
 
-$('.highlights a.arrowright, .highlights a.arrowleft').on('click', function(e){
+var $highlightArrows = $('.highlights a.arrowright, .highlights a.arrowleft'),
+	highlightIndex = 0;
+
+$highlightArrows.on('click', function(e){
 	e.preventDefault();
+
 	var highlightWidth = $('.highlight').outerWidth(true),
 		forwards = '-=' + highlightWidth + 'px',
-		backwards = '+=' + highlightWidth + 'px';
-		
-	if ($(this)[0].className === 'arrowright') {
+		backwards = '+=' + highlightWidth + 'px',
+		count = $('.highlight').length;
 
-		console.log($('.tiles').css('margin-left'));
-		$('.tiles').css('margin-left', forwards);
-	
-	} else {
-	
-		$('.tiles').css('margin-left', backwards);
-	
+	// if the button is dimmed stop it working
+	if(!$(this).hasClass('dim')){
+		// if its right go forward
+		if ($(this)[0].className === 'arrowright') {
+			$('.tiles').css('margin-left', forwards);
+			highlightIndex++;		
+		// if not go backwards
+		} else {
+			$('.tiles').css('margin-left', backwards);
+			highlightIndex--;
+		}
 	}
 
+	// check the index and dim buttons as necessary
+	if (highlightIndex === 0) {
+		$('a.arrowleft').addClass('dim');
+		$('a.arrowright').removeClass('dim');
+	} else if (highlightIndex === count - 2) {
+		$('a.arrowright').addClass('dim');
+		$('a.arrowleft').removeClass('dim');
+	} else {	
+		$('a.arrowright, a.arrowleft').removeClass('dim');
+	}
 });
 
 
