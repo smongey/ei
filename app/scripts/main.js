@@ -69,3 +69,28 @@ $('.slideshow a').on('click', function(e){
 });
 
 
+// Highlights Module
+
+$('.highlights a.arrowright, .highlights a.arrowleft').on('click', function(e){
+	e.preventDefault();
+	var highlightWidth = $('.highlight').outerWidth(true),
+		forwards = '-=' + highlightWidth + 'px',
+		backwards = '+=' + highlightWidth + 'px';
+		
+	if ($(this)[0].className === 'arrowright') {
+
+		console.log($('.tiles').css('margin-left'));
+		$('.tiles').css('margin-left', forwards);
+	
+	} else {
+	
+		$('.tiles').css('margin-left', backwards);
+	
+	}
+
+});
+
+
+
+
+

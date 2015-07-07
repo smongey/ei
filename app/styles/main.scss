@@ -893,10 +893,12 @@ section.uptodate {
       width: 100%;
       background: rgba(255,255,255,.9);
       padding: rem-calc(30) 0 rem-calc(60);
+      a.more {
+        bottom: rem-calc(-30);
+      }
       @media #{$small-only} {
         background: rgba(255,255,255,1);
         position: relative;
-        // padding: rem-calc(0);
         bottom: inherit;
       }
     }
@@ -954,6 +956,7 @@ section.uptodate {
       float: left;
       width: rem-calc(3000);
       padding: 0 rem-calc(10);
+      transition: all ease .4s;
     }
   }
 
