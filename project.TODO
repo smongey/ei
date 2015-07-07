@@ -14,13 +14,15 @@ Global:
 
  ☐ Page transitions
 
- ✔ Responsive Menu @done (15-07-07 20:52)
+
 
 Navigation:
  
  ☐ Dropdown implementation
 
  ☐ Hover events
+
+  ✔ Mobile Responsive Menu @done (15-07-07 20:52)
 
 
 Single / Page Modules:
