@@ -43,6 +43,7 @@ body {
 }
 p {
   margin-bottom: 0;
+  line-height: rem-calc(23);
 }
 
 h1, h2, h3 {
@@ -793,6 +794,10 @@ div.title {
     padding: rem-calc(20) rem-calc(30) rem-calc(20) rem-calc(10);  
     font-family: $sans;
     letter-spacing: rem-calc(-.3);  
+    p {
+      font-weight: 700;
+      line-height: rem-calc(21);
+    }
     a {
       color: inherit;
       border-bottom: 1px dotted $gold;
