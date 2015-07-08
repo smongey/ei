@@ -8,7 +8,7 @@
 $navy: #053341;
 $gold: #9e8c5d;
 $darkgold: darken($gold, 10%);
-$lightgold: lighten($gold, 42%);
+$lightgold: lighten($gold, 43%);
 
 $state: #93bd50;
 $historic: #009474;
@@ -63,6 +63,12 @@ h4, h5, h6 {
 hr { border-color: lighten($gold, 25%); }
 
 // Utilities
+
+.mobile-fix {
+  @media #{$small-only} {
+    padding: rem-calc(15) rem-calc(15) rem-calc(0) rem-calc(15) !important;
+  }
+}
 
 .button {
   background: $gold;
@@ -121,6 +127,11 @@ hr { border-color: lighten($gold, 25%); }
   }
   &.hide {
     opacity: 0;
+  }
+  @media #{$small-only} {
+    height: 30px;
+    width: 30px;
+    padding: 3px;
   }
 }
 
@@ -555,18 +566,29 @@ div.title {
   background: $navy;
   padding: rem-calc(25) rem-calc(30) rem-calc(70) rem-calc(30);
   height: inherit;
-  overflow: auto; 
+  overflow: auto;
+  @media #{$small-only} {
+    padding: rem-calc(15) rem-calc(15) rem-calc(15) rem-calc(15);
+  } 
   h1 { 
     color: white;
     font-size: rem-calc(58);
     line-height: rem-calc(58);
     letter-spacing: rem-calc(-2);
+    @media #{$small-only} {
+      font-size: rem-calc(36);
+      line-height: rem-calc(38);
+    }
     &.ire {
       color: $gold;
     }
   }
   .right {
     span { color: white; }
+    @media #{$small-only} {
+      margin-top: rem-calc(20);
+      float: left !important;
+    } 
   }
 }
 
@@ -574,13 +596,16 @@ div.title {
   @extend div.title;
   border-top: 1px solid rgba(0,0,0,.1);
   padding-bottom:rem-calc(30);
+  @media #{$small-only} {
+    padding:rem-calc(0);
+  }
   ul, li {
     list-style-type: none;
     margin: 0; 
     padding: 0;
   }
   .icon {
-    width: 10%;
+    width: 15%;
     float: left;
     height: 100%;
     span {
@@ -590,6 +615,9 @@ div.title {
     }
     .icon-location {
       font-size: rem-calc(28);
+      @media #{$small-only} {
+        margin-left: 4px;
+      }
     }
     .icon-web {
       font-size: rem-calc(40);
@@ -660,6 +688,7 @@ div.title {
 .standfirst {
   padding: rem-calc(20) rem-calc(0) rem-calc(40) rem-calc(30);
   background: $lightgold;
+  @extend .mobile-fix;
   .reminders & {
     background: white;
   }
@@ -669,6 +698,15 @@ div.title {
     letter-spacing: 0;
     font-size: rem-calc(26);
     margin-bottom: 0;
+    @media #{$small-only} {
+      font-size: rem-calc(22);
+      line-height: rem-calc(30); 
+    
+      &.ire {
+        // padding-bottom: 30px;
+      }
+    }
+
   }
   .share {
     padding: rem-calc(20) rem-calc(25);
@@ -706,6 +744,10 @@ div.title {
 .text {
   padding: rem-calc(30) rem-calc(30) rem-calc(20) rem-calc(30);
   background: $lightgold;
+  @extend .mobile-fix;
+  @media #{$small-only} {
+    // padding-top: rem-calc(20) !important;
+  }
 
   .large-4:last-of-type {
     float: left;
@@ -753,6 +795,12 @@ div.title {
     font-weight: 700;
     font-size: rem-calc(15);
     line-height: rem-calc(20);
+    @media #{$small-only} {
+      font-size: rem-calc(14);
+      top: rem-calc(20);
+      left: rem-calc(30);
+      line-height: rem-calc(18);
+    }
     .ire {
       color: white;
       font-weight: normal;
@@ -775,23 +823,31 @@ div.title {
   height: rem-calc(450);
   overflow: hidden;
   box-shadow: inset 1px 1px 0 0 $gold;
+  @media #{$small-only} {
+    height: auto;
+    padding-bottom: rem-calc(30);
+  }
   ul, li {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
- 
   .arrows {
     position: absolute;
     bottom: rem-calc(20);
     left: rem-calc(30);
+    @media #{$small-only} {
+      left: rem-calc(20);
+      bottom: rem-calc(15);
+    }
     li {
       display: inline-block;
     }
   }
 
   .caption {
-    padding: rem-calc(20) rem-calc(30) rem-calc(20) rem-calc(10);  
+    padding: rem-calc(20) rem-calc(30) rem-calc(20) rem-calc(10);
+    @extend .mobile-fix;  
     font-family: $sans;
     letter-spacing: rem-calc(-.3);  
     p {
@@ -858,8 +914,6 @@ div.title {
 .top-bar-section li:not(.has-form) a:not(.button), .top-bar-section li:not(.has-form) a:not(.button):hover {
   background: transparent;
 }
-
-
 
 .primary {
   ul {
@@ -995,7 +1049,13 @@ footer.container {
 
 
 section.related-partners {
-  padding: rem-calc(20) 0 rem-calc(40);
+  padding: rem-calc(0) 0 rem-calc(60);
+  &:last-child{
+    background: yellow;
+  }
+  @media #{$small-only} {
+    padding: rem-calc(10) 0 rem-calc(20);
+  }
   hr { margin-bottom: rem-calc(10); }
 
   h4 {
@@ -1382,3 +1442,27 @@ section.uptodate {
     }
   }
 }
+
+@media #{$small-only} {
+  .details .small-4 {
+     border-right: solid 1px rgba(0,0,0,0.1);
+    .icon {
+      height: 64px;
+      padding-top: 15px;
+      width: 100%;
+      text-align: center;
+      span {
+        margin: 0px;
+        padding: 0px;
+        font-size: 36px;
+        &.icon-web {
+          font-size: 50px;
+        }
+        &.icon-calendar {
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+
