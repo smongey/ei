@@ -531,7 +531,6 @@ section.container {
 
 
 // Category specific events, eg location/partner/
-
 .category {
 
 }
@@ -550,7 +549,6 @@ section.container {
 
 
 // Single modules 
-
 div.title {
   background: $navy;
   padding: rem-calc(25) rem-calc(30) rem-calc(70) rem-calc(30);
@@ -670,12 +668,16 @@ div.title {
     font-size: rem-calc(26);
     margin-bottom: 0;
   }
-  .share {
+  .share, .subnav {
     padding: rem-calc(20) rem-calc(25);
     background: rgba(255,255,255,.5);
     margin-top: rem-calc(20);
     border-top: 1px solid lighten($gold, 25%);
     min-height: rem-calc(200);
+    hr {
+      margin-bottom: rem-calc(10);
+      width: calc(100% + 25px);
+    }
   }
   h3 a {
     color: inherit;
@@ -711,6 +713,7 @@ div.title {
     float: left;
   }
   p {
+    font-size: rem-calc(17);
     padding-bottom: rem-calc(15);
   }
 
@@ -767,7 +770,26 @@ div.title {
 }
 
 .video {
-
+  position: relative;
+  img {
+    margin: 0;
+  }
+  .icon-play {
+    font-size: rem-calc(90);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    color: white;
+    transition: $trans;
+  }
+  &:hover {
+    cursor: pointer;
+    .icon-play {
+      opacity: .8; 
+    }
+  }
 }
 
 .slideshow {
@@ -952,6 +974,7 @@ div.title {
   padding: 0 rem-calc(25) 0 rem-calc(5);
 }
 
+
 // Footer
 
 footer.container {
@@ -1025,6 +1048,7 @@ section.related-events {
 section.uptodate {
   background: $lightgold;
   padding-bottom: rem-calc(60);
+
   h4 {
     font-weight: 700;
   }
@@ -1059,10 +1083,61 @@ section.uptodate {
       line-height: rem-calc(38);
     }
   }
-
-
 }
 
+section.uptodate.partners {
+  background: white;
+}
+
+// Page
+.page {
+  background: $lightgold;  
+  .standfirst, .text {
+    background: white;
+    .subnav {
+      position: absolute;
+      top: 0;
+      padding: 0;
+      padding-bottom: rem-calc(5);
+      z-index: 1;
+      border-top: none;
+      width: calc(100% - 20px);
+      background: transparent;
+      ul, li {
+        margin: 0; 
+        padding: 0;
+        list-style-type: none;
+      }
+
+      .title {
+        text-transform: uppercase;
+        font-weight: 700;
+        margin: rem-calc(20) 0;
+      }
+      ul {
+        border-top: 1px solid lighten($gold, 25%);
+        margin-bottom: rem-calc(30);
+      }
+      li {
+        font-family: $sans;
+        line-height: rem-calc(20);
+        margin-bottom: rem-calc(10);
+        transition: $trans;
+        &:hover:not(.title), &.active {
+          pointer: cursor;
+          border-left: 3px solid $gold;
+          padding-left: rem-calc(8);
+        }
+      }
+      a {
+        color: $navy;
+      }
+
+
+    }
+  }
+
+}
 
 // Homepage specific componenets
 #home {
@@ -1161,73 +1236,135 @@ section.uptodate {
   input.submit {
     display: block;
   }
+}
 
-  .signup {
 
-    position: relative;
+// Partners listing
+.partners {
+  background: $lightgold;
 
-    .large-1 {
-      text-align: center; 
-      span { 
-        position: absolute;
-        width: rem-calc(1);
-        height: rem-calc(160);
-        background: lighten($gold, 30%);
-      }
+  form.search input {
+    background: white !important;
+  }
+  
+  .categories ul > li {
+    background: white !important;
+  }
+
+  .list {
+    ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none !important;
     }
 
-    a {
-      display: inline-block;
-      width: rem-calc(38);
-      height: rem-calc(38);
-      background: $lightgold;
-      border-radius: 100%;
-      transition: $trans;
-      text-align: center;
-      margin: rem-calc(20) rem-calc(10) 0 0;
-      padding: 0 rem-calc(2);
-      &:hover {
-        background: $gold;
-        .icon-twitter, .icon-facebook {
-          color: white;
+    & > div > ul {
+      margin-bottom: rem-calc(40);
+    }
+
+    h4 {
+      font-family: $serif;
+    }
+
+    .external {
+      li {
+        margin-bottom: rem-calc(10);
+        a {
+          font-family: $sans;
+          line-height: rem-calc(15);
+          color: $navy;
         }
       }
     }
 
-    .icon-twitter, .icon-facebook {
-      color: $gold;
-      font-size: rem-calc(28);
-      line-height: rem-calc(38);
-    }
-    label {
-      color: $navy;
-      font-family: $sans;
-      font-size: rem-calc(14);
+    li.row {
+      padding: rem-calc(20) rem-calc(10);
+      background: white;
+      margin-bottom: rem-calc(1);
+      .large-3 {
+        padding-left: rem-calc(20);
+      } 
     }
 
-    input[type="text"] {
-      border: none;
-      background: $lightgold;
-      box-shadow: none;
-      padding: rem-calc(16);
-      color: $gold;
-      margin-top: rem-calc(10);
-      font-size: rem-calc(14);
-      height: inherit;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    input[type="submit"] {
-      margin-top: rem-calc(31);
-      padding: rem-calc(17);
-      font-weight: 700;
-    }
-    input[type="submit"]:focus {
+    li.title {
       background: $navy;
-      outline: none;
+      padding: rem-calc(20) rem-calc(30);
+      h2 {
+        color: white;
+        font-size: rem-calc(22);
+      }
     }
   }
 
+}
+
+
+// Signup
+.signup {
+
+  position: relative;
+
+  .large-1 {
+    text-align: center; 
+    span { 
+      position: absolute;
+      width: rem-calc(1);
+      height: rem-calc(160);
+      background: lighten($gold, 30%);
+    }
+  }
+
+  a {
+    display: inline-block;
+    width: rem-calc(38);
+    height: rem-calc(38);
+    background: $lightgold;
+    border-radius: 100%;
+    transition: $trans;
+    text-align: center;
+    margin: rem-calc(20) rem-calc(10) 0 0;
+    padding: 0 rem-calc(2);
+    &:hover {
+      background: $gold;
+      .icon-twitter, .icon-facebook {
+        color: white;
+      }
+    }
+  }
+
+  .icon-twitter, .icon-facebook {
+    color: $gold;
+    font-size: rem-calc(28);
+    line-height: rem-calc(38);
+  }
+
+  label {
+    color: $navy;
+    font-family: $sans;
+    font-size: rem-calc(14);
+  }
+
+  input[type="text"] {
+    border: none;
+    background: $lightgold;
+    box-shadow: none;
+    padding: rem-calc(16);
+    color: $gold;
+    margin-top: rem-calc(10);
+    font-size: rem-calc(14);
+    height: inherit;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  input[type="submit"] {
+    margin-top: rem-calc(31);
+    padding: rem-calc(17);
+    font-weight: 700;
+  }
+  input[type="submit"]:focus {
+    background: $navy;
+    outline: none;
+  }
 }
 
 
@@ -1275,7 +1412,7 @@ section.uptodate {
       display: block;
       float: left;
       background: $lightgold;
-      padding: rem-calc(10) !important;
+      padding: rem-calc(11) rem-calc(11) rem-calc(10) !important;
       border: none;
       height: inherit;
       box-shadow: none;

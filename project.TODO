@@ -15,7 +15,6 @@ Global:
  ☐ Page transitions
 
 
-
 Navigation:
  
  ☐ Dropdown implementation
@@ -40,7 +39,7 @@ Single / Page Modules:
 
  Page Specific Module:  
 
- ☐ Related Items Subnav (right nav item) 
+ ☐ Related Items Subnav (right nav item)
 
  ☐ The Signatories  (right nav item)
 
@@ -51,7 +50,7 @@ Single / Page Modules:
  ☐ Partners Dropdown nav
 
 
- Events:
+Events:
 
  ☐ Grid / List view interaction
 
@@ -59,7 +58,7 @@ Single / Page Modules:
 
 
 
- Home:
+Home:
 
    ☐ Implement video modal
 
