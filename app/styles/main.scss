@@ -239,7 +239,6 @@ section.container {
       height: rem-calc(488);
       @media #{$medium-only} { 
         width: calc(50% - 10px);
-
       }
       @media #{$small-only} { 
         width: 100% !important;
@@ -336,6 +335,13 @@ section.container {
     position: relative;
     z-index: 1;
     overflow: hidden;
+    @extend .mobile-fix;
+    @media #{$small-only} {
+      height: auto;
+      span.ire {
+        padding-bottom: 60px;
+      }
+    }
     .date {
       color: $darkgold;
       font-size: rem-calc(20);
@@ -468,6 +474,12 @@ section.container {
     height: rem-calc(500);
     .info {
       height: 100%;
+      @media #{$small-only} {
+
+      span.ire {
+        padding-bottom: 0px;
+      }
+    }
     }
   }
 
@@ -703,7 +715,7 @@ div.title {
       line-height: rem-calc(30); 
     
       &.ire {
-        // padding-bottom: 30px;
+        padding-bottom: 30px;
       }
     }
 
@@ -714,6 +726,12 @@ div.title {
     margin-top: rem-calc(20);
     border-top: 1px solid lighten($gold, 25%);
     min-height: rem-calc(200);
+    @extend .mobile-fix;
+    
+    @media #{$small-only} {
+      min-height: rem-calc(140);
+    }
+
   }
   h3 a {
     color: inherit;
@@ -1093,6 +1111,9 @@ section.uptodate {
   }
   a.button.tiny {
     margin-top: rem-calc(20);
+    @media #{$small-only} {
+      margin-bottom: 0px;
+    }
   }
   .social {
     a {
