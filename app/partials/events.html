@@ -5,23 +5,31 @@
 				<h3>Events <span class="ire">Imeachtaí</span></h3>
 				</div>
 				<div class="right">
-					<form class="search" method="get" action="">
-						<input id="search" type="text" class="" value=""/>
-						<span class="icon-search"></span>
-					</form>
-					<div class="categories">
-						<ul>
-							<li><a href="#">Everything <span class="icon-arrow"></span></a></li>
-							<ul>
-								<li><a href="#">One</a></li>
-								<li><a href="#">Two</a></li>
-								<li><a href="#">Three</a></li>
-								<li><a href="#">Four</a></li>
-								<li><a href="#">Five</a></li>
-								<li><a href="#">Six</a></li>
-							</ul>
-						</ul>
-					</div>
+          <form action="/events" method="get" id="views-exposed-form-events-basic-page-1" accept-charset="UTF-8">
+            <div>
+              <div class="views-exposed-form">
+                <div class="views-exposed-widgets clearfix">
+                  <div id="edit-tid-wrapper" class="views-exposed-widget views-widget-filter-tid">
+                    <div class="views-widget">
+                      <div class="form-item form-type-select form-item-tid">
+                        <select id="edit-tid" name="tid" class="form-select">
+                          <option value="All" selected="selected">- Any -</option><option value="10">State Ceremonial</option><option value="8">Historical Reflection</option>
+                          <option value="11">Cultural Expression</option>
+                          <option value="12">Community Participation</option>
+                          <option value="13">Global and Diaspora</option>
+                          <option value="9">An Teanga Bheo</option>
+                          <option value="14">Youth and Imagination</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="views-exposed-widget views-submit-button">
+                    <input type="submit" id="edit-submit-events-basic" name="" value="Apply" class="form-submit">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
 					<div class="view">
 						<a href="#" class="active">
 							<span class="icon-grid"></span>
