@@ -19,7 +19,7 @@ $('.search span.icon-search').on('click', function(){
 
 // List / Grid View switcher
 
-$('.view a').on('click', function(e){
+$('.view-switcher a').on('click', function(e){
 
 	e.preventDefault();
 	$(this).addClass('active');
