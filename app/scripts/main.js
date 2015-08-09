@@ -107,7 +107,18 @@ $highlightArrows.on('click', function(e){
 	}
 });
 
+function autoPlayVid(vcode, width, height) {
+	$(".videolink").html('<iframe width="700" height="400" src="https://www.youtube.com/embed/'+vcode+'?autoplay=1&loop=1&rel=0&wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>').css('display', 'inline-block');
+}
 
+
+$('.still').click(function(e){
+	e.preventDefault();
+	$(this).hide();
+	$('.video img').animate({ 'opacity': 0 }, 300);
+	self.autoPlayVid('mwsFew1VNN4','560','400');
+	// $(".video").fitVids();
+});
 
 
 

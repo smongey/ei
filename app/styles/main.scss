@@ -581,6 +581,9 @@ div.title {
       color: $gold;
     }
   }
+  .left {
+    max-width: 90%;
+  }
   .right {
     span { color: white; }
     @media #{$small-only} {
@@ -1076,6 +1079,9 @@ section.related-partners {
   &:last-child{
     background: yellow;
   }
+  .column + .column:last-child, .columns + .columns:last-child {
+    float: left;
+  }
   @media #{$small-only} {
     padding: rem-calc(10) 0 rem-calc(20);
   }
@@ -1241,6 +1247,11 @@ section.uptodate.partners {
     background: $lightgold;
 
     .video {
+
+      .videolink {
+        width: 100%;
+        max-width: 100%;
+      }
       & > div {
         position: absolute;
         top: 50%;
